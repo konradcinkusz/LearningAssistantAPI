@@ -2,7 +2,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
-def delete_all_assistants(assistants_data):
+def remove_all_assistants(assistants_data):
     for assistant in assistants_data:
         assistant_id = assistant.id
         try:
@@ -22,4 +22,4 @@ my_assistants = client.beta.assistants.list(
 # Extract the data attribute from the my_assistants object
 assistants_data = my_assistants.data
 
-delete_all_assistants(assistants_data)
+remove_all_assistants(assistants_data)
