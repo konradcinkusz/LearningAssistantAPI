@@ -5,24 +5,9 @@ class BookWriterApplication(Application):
     def __init__(self):
         super().__init__(BookWriterService())
 
-    def run(self):
-        assistant = self.service.create_or_retrieve_assistant()
-        if assistant is None:
-            print("Failed to create or retrieve the Book Writer assistant.")
-            return
-        
+    def _execute(self, assistant):
         print("Book Writer Assistant is ready to help you.")
-        
         self.service.create_thread()
-
-        #I have modified this
-        self.service.post_message("I have an idea of creating book about neuralink usage by the 100 years from today. Write conspectus and show me the example chapters.")
-        
-        # Assuming you have the assistant ID from the assistant object
-        assistant_id = assistant.id  # Example; replace with actual retrieval
-        
-        #I have modified this
-        instructions = "Please make it realistic, although it still should be sci-fci."
-
-        
-        self.service.run_assistant_and_wait(assistant_id, instructions)
+        self.service.post_message("I have an idea of creating a book about Neuralink usage by the 100 years from today. Write a conspectus and show me the example chapters.")
+        instructions = "Please make it realistic, although it still should be sci-fi."
+        self.service.run_assistant_and_wait(assistant.id, instructions)

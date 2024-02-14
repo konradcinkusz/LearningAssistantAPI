@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
 from application.book_writer_application import BookWriterApplication
-from application.math_tutor_application import MathTutorApplication
+from application.math_tutor_applications.quadratic_equation import MathTutorApplication
 import threading
 
 def update_progress_bar(progress_bar, status_label, app_name, process_function):
