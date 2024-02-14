@@ -12,6 +12,13 @@ class OpenAIClient:
             model=model,
             file_ids=file_ids
         )
+    
+    def submit_tool_outputs(self, thread_id, run_id, tool_outputs):
+        self.client.beta.threads.runs.submit_tool_outputs(
+            thread_id=thread_id,
+            run_id=run_id,
+            tool_outputs=tool_outputs
+        )
 
     def list_assistants(self, order="desc", limit="20"):
         return self.client.beta.assistants.list(order=order, limit=limit)
